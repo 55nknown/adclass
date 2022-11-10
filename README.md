@@ -51,6 +51,6 @@ Identifying the ad from the references could work two ways:
 
 ## QA
 
-- A clear guiding should be displayed for the user for taking an optimal pictuer of the ad
+- A clear guiding should be displayed for the user for taking an optimal picture of the ad
 - The model should find the correct ad image on the first or second guess
 - If the results are not good enough the user should be prompted to retry, or select the correct ad between two or three possible matches
