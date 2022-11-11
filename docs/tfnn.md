@@ -16,21 +16,9 @@
 
 6. Return ad information to the mobile client
 
-## Identification Model
-
-Identifying the ad from the references could work two ways:
-
-1. Train the classification model each time after adding a new ad
-
-   - This is very resource intensive and has many limitations
-
-2. Get some score based value on how much the images match
-
-   - This means there should be a model that works for all images, and is trained generally for image comparison and returns a percentage.
-
 ## Technologies used
 
-- Node JS + TensorFlow.js
+- Node JS
 
   - Used on the server side
   - Contains the image comparison API
@@ -45,9 +33,8 @@ Identifying the ad from the references could work two ways:
 
 1. Collect training data for the NNs
 2. Train the frame-finder model on the collected images
-3. Train the image comparison model on some reference ads
-4. Create an ad identification backend with TF.js
-5. Integrate the ad identification client and the TFLite frame-finder
+3. Create an ad identification backend with some algorithm
+4. Integrate the ad identification client and the TFLite frame-finder
 
 ## QA
 
