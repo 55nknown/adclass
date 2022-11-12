@@ -17,3 +17,4 @@ I created the following [example program](/example/README.md) with the help of t
 
 - Running the example program, it executes pretty fast already _(less than 400ms on my machine)_, but what could speed it up even more is to **pre-compute the keypoints** on the static ad images and load them back on each run.
 - For finding features more easily, a sharpening filter could be applied on the input image. According to my tests, this turned out to be true.
+- Another way to improve confidency is to gather more samples and average the results. The only caveat with this method would be the increased bandwidth usage of uploading multiple images, but this could be easily solved by moving the entire computation to [client-side](https://opencv.org/android/).
