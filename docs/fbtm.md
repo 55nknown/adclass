@@ -16,4 +16,4 @@ I created the following [example program](/example/README.md) with the help of t
 ## Optimization
 
 - Running the example program, it executes pretty fast already _(less than 400ms on my machine)_, but what could speed it up even more is to **pre-compute the keypoints** on the static ad images and load them back on each run.
-- For finding features more easily, a sharpening filter could be applied on the input image.
+- For finding features more easily, a sharpening filter could be applied on the input image. According to my tests, this turned out to be true.
