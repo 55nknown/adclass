@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: "ADClass API"
+  version: "1.0"
+  description: "API Documentation for the ad classification server.\n\nFor implemented examples, check out the unit tests."
+paths:
+  /api/images/find:
+    post:
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/InputsKeypoints'
+      responses:
+        '200':
+          description: "Keypoint matching succeeded"
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/MatchResults'
+        '500':
+          description: "Failed to match keypoints"
+  /api/images/index:
+    get:
+      responses:
+        '200':
+          description: "Index ids successfully retrived"
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/IndexResults'
+    post:
+      requestBody:
+        content:
+          'multipart/form-data':
+            schema:
+              $ref: '#/components/schemas/ImageIndex'
+      responses:
+        '200':
+          description: "Image successfully indexed"
+  /api/images/deindex:
+    post:
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/IndexId'
+      responses:
+        '200':
+          description: "Index has been deleted successfully"
+        '404':
+          description: "No index exists with this id"
+          
+components:
+  schemas:
+    InputsKeypoints:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              keypoints:
+                type: array
+                items:
+                  type: number
+    ImageIndex:
+      type: object
+      properties:
+        data:
+          type: string
+          format: binary
+        id:
+          type: string
+          example: "6373e9c3157d9741abde4373"
+    IndexId:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "6373e9c0157d9741abde4371"
+    IndexResults:
+      type: array
+      items:
+        type: string
+        example: "6373e9be157d9741abde436f"
+    MatchResults:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                example: "6373e7b3157d9741abde4369"
+              score:
+                type: number
+                example: 2000
+              matches:
+                type: number
+                example: 2

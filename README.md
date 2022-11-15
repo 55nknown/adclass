@@ -7,6 +7,12 @@
 - `MONGO=mongodb://username:password@host:port/database?retryWrites=true&w=majority` _# MongoDB Connection uri_
 - `MONGO_DB=database` _# MongoDB Database name_
 
+## Documentation
+
+Check out the API documentation: `adclass_api.yaml`
+
+Use Insomnia or any other API doc designer of your choice, or load up a light editor at <https://editor.swagger.io/>
+
 ## Testing
 
 To run the tests, run:
@@ -34,8 +40,9 @@ Most of the time is spent by MongoDB querying documents, although I'm using a re
 - For finding features more easily, a sharpening filter could be applied on the input image. According to my tests, this turned out to be true.
 - Another way to improve confidency is to gather more samples and average the results. The only caveat with this method would be the increased bandwidth usage of uploading multiple images, but this could be easily solved by moving the entire computation to [client-side](https://opencv.org/android/).
 
+## Methodology
 
-## Feature-based Template Matching
+### Feature-based Template Matching
 
 I received the hint, to solve this problem with a technique called [Template Matching](https://en.wikipedia.org/wiki/Template_matching). While template matching is great and all, in this specific use case, it can't really handle all the distortions and transformations in it's basic form. That is why I set out to find a solutions that uses template matching, but could handle harder scenarios that occur in the real life.
 Eventually, I came across a method called Feature-based Template Matching, which essentially finds distinct points in images, and compares them.
