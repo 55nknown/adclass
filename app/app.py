@@ -35,13 +35,18 @@ def find_image_index():
 
     all_results = []
 
+    # Match all inputs
     for input_kp in inputs:
         input_results = []
         train = np.asarray(input_kp["keypoints"], dtype=np.uint8)
 
+        # Match each image for the input
         for index_kp in indexes:
             query = np.asarray(index_kp["keypoints"], dtype=np.uint8)
+
+            # Calculate match score based on keypoint distance
             score = matcher.calculate_score(query, train)
+
             if not score is None:
                 input_results.append({"id": index_kp["id"], "score": score})
 
@@ -55,6 +60,7 @@ def find_image_index():
 
     images = {}
 
+    # Group results by images
     for result in all_results:
         best_index = result[0]["id"]
         best_score = result[0]["score"]
@@ -69,8 +75,12 @@ def find_image_index():
 
     for index_id in images.keys():
         scores = images[index_id]["scores"]
-        final_score = sum(scores) / scores.__len__()
         count = images[index_id]["count"]
+
+        # Average scores for index
+        final_score = sum(scores) / scores.__len__()
+
+        # Final result (multiply score by matches)
         results.append({"id": index_id, "score": final_score * count, "matches": count})
 
     # Sort by wins (descending)
@@ -83,6 +93,7 @@ def get_image_index():
     db = get_database()
     indexes = db.find()
 
+    # Return index ids
     results = [i["id"] for i in indexes]
 
     return {"images": results}
