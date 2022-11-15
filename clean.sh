@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -rf **/.pytest_cache/ **/__pycache__
+rm -rf .pytest_cache/ **/.pytest_cache/ **/*/__pycache__
