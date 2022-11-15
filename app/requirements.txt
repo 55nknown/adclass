@@ -1,0 +1,4 @@
+numpy>=1.23.4
+opencv-python>=4.6.0.66
+Flask>=2.2.2
+pymongo>=4.3.2
