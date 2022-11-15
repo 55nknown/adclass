@@ -107,7 +107,7 @@ def index_image():
 
     return Response(status=200)
 
-@router.route('/api/images/index', methods=["DELETE"])
+@router.route('/api/images/deindex', methods=["POST"])
 def remove_index():
     db = get_database()
     index_id = request.json["id"]
