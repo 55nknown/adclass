@@ -9,13 +9,6 @@ from classifier import matcher
 
 router = Flask(__name__)
 
-# Load .env file while debugging
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except:
-    pass
-
 MONGO_CONNECTION = os.environ["MONGO"]
 MONGO_DATABASE = os.environ["MONGO_DB"]
 
