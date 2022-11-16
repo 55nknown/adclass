@@ -2,7 +2,20 @@ version: '3.9'
 services:
   api:
     build: app
+    restart: always
     ports:
       - "8080:5000"
-    env_file:
-      - .env
+    environment:
+      - "MONGO=mongodb://root:admin@index:27017"
+      - "MONGO_DB=adclass"
+  index:
+    image: mongo
+    restart: always
+    volumes:
+      - data:/data/db
+    environment:
+      - "MONGO_INITDB_ROOT_USERNAME=root"
+      - "MONGO_INITDB_ROOT_PASSWORD=admin"
+
+volumes:
+  data:
