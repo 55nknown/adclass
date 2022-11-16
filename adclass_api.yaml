@@ -81,10 +81,13 @@ components:
           type: string
           example: "6373e9c0157d9741abde4371"
     IndexResults:
-      type: array
-      items:
-        type: string
-        example: "6373e9be157d9741abde436f"
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            type: string
+            example: "6373e9be157d9741abde436f"
     MatchResults:
       type: object
       properties:
