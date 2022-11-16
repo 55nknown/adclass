@@ -103,7 +103,7 @@ def index_image():
 
     # Generate keypoints
     buf = request.files['data'].stream.read()
-    kp = keypoints.get_keypoints(buf)
+    kp = keypoints.get_keypoints(buf, resize=True)
 
     # Store keypoints
     doc = {"keypoints": kp.tolist(), "id": index_id}
