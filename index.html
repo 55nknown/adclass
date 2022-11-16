@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV2 Test</title>
+</head>
+
+<body>
+  <div class="inputoutput">
+    <img id="imageSrc" alt="No Image" />
+    <div class="caption">imageSrc <input type="file" id="fileInput" name="file" /></div>
+  </div>
+  <script>
+    let imgElement = document.getElementById("imageSrc")
+    let inputElement = document.getElementById("fileInput");
+    inputElement.addEventListener("change", (e) => {
+      imgElement.src = URL.createObjectURL(e.target.files[0]);
+    }, false);
+    imgElement.onload = function () {
+      // Feature2D API
+      // Documentation: https://docs.opencv.org/3.4/d0/d13/classcv_1_1Feature2D.html
+      let orb = new cv.ORB();
+
+      let mat = cv.imread(imgElement);
+      let kp = new cv.KeyPointVector();
+      let desc = new cv.Mat();
+      orb.detect(mat, kp);
+      orb.compute(mat, kp, desc);
+      console.log(desc);
+      console.log(desc.size());
+    }
+  </script>
+  <script src="opencv.js"></script>
+</body>
+
+</html>
