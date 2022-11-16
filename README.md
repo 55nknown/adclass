@@ -1,9 +1,10 @@
 # Ad Classification
 
-## Here are a list of possible solutions
+## Benchmarking
 
-- [Machine Learning](/docs/tfnn.md)
-- [Template Matching](/docs/fbtm.md)
-  - Example solution: [OpenCV with Python](/example)
+### Testing factors
 
-![image](https://user-images.githubusercontent.com/55922348/201491707-6e14fe77-2da3-4946-a884-056075477071.jpeg)
+- Image resolution
+  - Results: optimal resolution is around 1000px
+- Image sharpness filter
+  - Results: optimal sharpening is around 2x (filter2D)
