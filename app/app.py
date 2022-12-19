@@ -21,8 +21,19 @@ def get_database():
 
 @router.route('/api/images/find', methods=["POST"])
 def find_image_index():
-    inputs = request.json["inputs"]
-    
+    inputs = []
+
+    # Json input with client-side processing
+    if request.content_type == "application/json":
+        inputs = request.json["inputs"]
+
+    # Raw input with server-side processing
+    elif request.content_type.split(';')[0] == "multipart/form-data":
+        for key in request.files.keys():
+            buf = request.files[key].stream.read()
+            kp = keypoints.get_keypoints(buf, resize=True)
+            inputs.append({"keypoints": kp.tolist()})
+
     db = get_database()
     indexes = list(db.find())
 

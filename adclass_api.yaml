@@ -8,6 +8,9 @@ paths:
     post:
       requestBody:
         content:
+          'multipart/form-data':
+            schema:
+              $ref: '#/components/schemas/InputImages'
           'application/json':
             schema:
               $ref: '#/components/schemas/InputsKeypoints'
@@ -65,12 +68,20 @@ components:
                 type: array
                 items:
                   type: number
+    InputImages:
+      type: object
+      properties:
+        file1:
+          type: string
+          format: binary
+          description: "There could be multiple file inputs (example: file2, file3, ...).\nThe name of the form data key does not matter."
     ImageIndex:
       type: object
       properties:
         data:
           type: string
           format: binary
+          description: Raw image bytes
         id:
           type: string
           example: "6373e9c3157d9741abde4373"
@@ -81,13 +92,10 @@ components:
           type: string
           example: "6373e9c0157d9741abde4371"
     IndexResults:
-      type: object
-      properties:
-        images:
-          type: array
-          items:
-            type: string
-            example: "6373e9be157d9741abde436f"
+      type: array
+      items:
+        type: string
+        example: "6373e9be157d9741abde436f"
     MatchResults:
       type: object
       properties:
@@ -105,3 +113,4 @@ components:
               matches:
                 type: number
                 example: 2
+              
