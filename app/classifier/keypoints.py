@@ -7,7 +7,7 @@ def get_keypoints(buf: bytes, resize=False) -> np.ndarray:
     image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 
     if resize:
-        image = cv2.resize(image, (1000, 1000 / (image.shape[1] / image.shape[0])))
+        image = cv2.resize(image, (1000, int(1000 / (image.shape[1] / image.shape[0]))))
 
     _, desc = orb.detectAndCompute(image, None)
 
