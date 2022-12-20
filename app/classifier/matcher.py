@@ -4,7 +4,7 @@ import numpy as np
 from typing import Optional
 
 MIN_MATCH_COUNT = 10
-MIN_SCORE_THRESHOLD = 500
+MIN_SCORE_THRESHOLD = 300
 FLANN_INDEX_LSH = 6
 FLANN_INDEX_KDTREE = 0
 

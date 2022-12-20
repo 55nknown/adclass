@@ -31,7 +31,7 @@ def find_image_index():
     elif request.content_type.split(';')[0] == "multipart/form-data":
         for key in request.files.keys():
             buf = request.files[key].stream.read()
-            kp = keypoints.get_keypoints(buf, resize=True)
+            kp = keypoints.get_keypoints(buf)
             inputs.append({"keypoints": kp.tolist()})
 
     db = get_database()
